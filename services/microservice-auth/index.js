@@ -1,9 +1,12 @@
 const express = require('express');
 const app = express();
-require('dotenv').config()
 
-app.use('/',(req,res)=>{
-return res.send("hello ec2");
+app.use('/', (req, res) => {
+    return res.send("authenticated");
 });
 
-module.exports = app;
+module.exports = (port) => {
+    app.listen(port, console.log(`auth service is on port ${port}`));
+    return "auth";
+}
+
